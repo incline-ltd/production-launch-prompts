@@ -1,11 +1,12 @@
 # Production Launch Prompts for Solo Founders
 
 20 audit-first prompts for Claude Code, Codex, and other codebase-aware agents
-before real users, real money, or production traffic are involved.
+before real users or production traffic are involved.
 
 This is for solo founders who need a practical launch review without enterprise
-process. It is strongest for SaaS, fintech, marketplaces, AI products, and other
-apps where security, data integrity, payments, and trust matter.
+process. It works for SaaS, marketplaces, AI products, internal tools, mobile
+apps, APIs, dashboards, and most software products where security, reliability,
+data integrity, and user trust matter.
 
 ## Why This Exists
 
@@ -14,7 +15,7 @@ Most prompt collections are generic. Production launch work is not generic.
 Before launch, a solo founder needs to know:
 
 - Can one user access another user's data?
-- Are secrets, tokens, or payment webhooks exposed?
+- Are secrets, tokens, or sensitive workflows exposed?
 - Will the app lose data under concurrent writes?
 - Are critical flows tested?
 - Can the product recover from failure?
@@ -23,6 +24,12 @@ Before launch, a solo founder needs to know:
 These prompts turn that uncertainty into a repeatable launch checklist.
 
 ## What's Inside
+
+| File | Use |
+| --- | --- |
+| [PROMPTS.md](PROMPTS.md) | 20 copy-paste prompts for codebase-aware agents |
+| [CHECKLIST.md](CHECKLIST.md) | One-page launch readiness checklist |
+| [SCORECARD.md](SCORECARD.md) | Template for recording audit results and fixes |
 
 ### Part 1: Pre-Launch Audit
 
@@ -47,14 +54,14 @@ Run these after critical launch blockers are fixed.
 
 | # | Prompt | What It Improves |
 | --- | --- | --- |
-| 11 | Privacy and Compliance | PII, consent, retention, payments |
+| 11 | Privacy and Compliance | PII, consent, retention, data flows |
 | 12 | Repository and Developer Experience | README, docs, templates, setup |
 | 13 | Onboarding and Activation | First-run flow, empty states, activation |
 | 14 | Passwordless Auth | Magic links, OTPs, replay protection, lockouts |
 | 15 | Error Handling and Resilience | Retries, timeouts, recovery |
 | 16 | Analytics and User Behavior | Funnel events, activation, churn signals |
 | 17 | Notifications and Communication | Email, in-app, duplicate prevention |
-| 18 | Payment and Subscription Flow | Webhooks, pricing, failed payments |
+| 18 | Revenue and Subscription Flow | Pricing, plans, billing, entitlements |
 | 19 | Documentation and Knowledge Base | User docs, FAQ, troubleshooting |
 | 20 | Mobile Responsiveness | 360px through desktop readiness |
 
@@ -88,7 +95,8 @@ Recommended order:
 6. Run 11-20 after all critical launch blockers are resolved.
 
 Do not go live while prompts 02, 05, 07, 08, or 10 report CRITICAL issues.
-For fintech, payment, or regulated products, also clear prompts 11 and 18.
+For apps with payments, regulated data, AI data-sharing, or high-risk user
+actions, also clear prompts 11 and 18.
 
 ## Output Contract
 
@@ -128,7 +136,7 @@ Top 10 fixes ranked by risk x effort: ...
 
 - Audit-first, so agents do not rewrite your app before you understand the risk.
 - Built for founder-speed launches, not enterprise checklists.
-- Fintech and payment-aware without assuming every app is a trading app.
+- Universal product/app checks with optional coverage for high-risk flows.
 - Cross-tool: works with Claude Code, Codex, Cursor, and most repo-aware agents.
 - Output-focused: every prompt demands file paths, severity, impact, and fixes.
 
@@ -138,8 +146,8 @@ These prompts are not a replacement for professional security review, legal
 advice, compliance review, or production incident planning. They are a fast way
 to catch obvious and high-risk launch issues before users find them.
 
-Never paste real secrets, private keys, customer data, payment credentials, or
-production logs into an AI tool. If a prompt finds a secret, rotate it.
+Never paste real secrets, private keys, customer data, production credentials,
+or production logs into an AI tool. If a prompt finds a secret, rotate it.
 
 ## Author
 

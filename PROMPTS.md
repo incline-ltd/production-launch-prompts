@@ -77,15 +77,15 @@ Check:
 - SQL/NoSQL injection
 - SSRF, open redirects, unsafe file upload, and unsafe deserialization
 - CSRF protection where browser cookies are used
-- Rate limiting on login, OTP, password reset, API keys, payments, and other
-  sensitive actions
+- Rate limiting on login, OTP, password reset, API keys, admin actions, and
+  other sensitive workflows
 - Security headers: HSTS, CSP, X-Frame-Options, X-Content-Type-Options
 - Session token entropy, storage, expiry, rotation, and logout behavior
 - Whether secrets, internal paths, stack traces, or privileged fields leak in
   API responses
-- Webhook signature verification for payments and external services
-- Fintech/payment-specific risks: account takeover, unauthorized money movement,
-  duplicate orders, webhook replay
+- Webhook signature verification for external services
+- High-risk workflow abuse: account takeover, duplicate submissions, unauthorized
+  actions, webhook replay, and automated abuse
 
 For every vulnerability, provide:
 - File path and line number
@@ -97,7 +97,7 @@ For every vulnerability, provide:
 End with:
 - Security score: X/10
 - Issues that could cause immediate user data breach
-- Issues that could allow account takeover or unauthorized financial action
+- Issues that could allow account takeover or unauthorized sensitive action
 - Top 10 fixes ranked by exploitability x impact
 ```
 
@@ -240,7 +240,8 @@ Check:
 - Internal IDs or sensitive fields exposed in public responses
 - Endpoints doing too much
 - Missing rate limits for expensive or sensitive endpoints
-- Missing idempotency keys for payments, mutations, orders, and external side effects
+- Missing idempotency keys for mutations, orders, bookings, billing, or external
+  side effects
 - Webhook endpoint design and replay protection
 
 For every issue, provide:
@@ -268,14 +269,14 @@ Do not modify files yet. Produce a report first.
 
 Check:
 - Overall test coverage if measurable
-- Critical paths with zero coverage: auth, payments, data mutations, account
-  settings
+- Critical paths with zero coverage: auth, data mutations, account settings, and
+  high-risk workflows
 - Domain-critical paths with zero coverage: orders, bookings, workflows,
-  strategy runs, or equivalent
+  approvals, uploads, or equivalent
 - Happy-path-only tests with no failure cases
 - Flaky tests or tests that depend on timing/order
-- Missing integration tests for external services: email, messaging, payments,
-  exchanges, storage
+- Missing integration tests for external services: email, messaging, billing,
+  storage, AI providers, or other integrations
 - Missing E2E tests for core user flows
 - Tests that assert implementation details instead of behavior
 - Missing security tests: unauthorized access, tenant isolation, rate limits,
@@ -390,10 +391,10 @@ Check:
 - Session storage if more than one server runs
 - File uploads and whether they depend on local disk
 - Background jobs and duplicate work with multiple workers
-- Missing idempotency keys on critical operations: payments, orders, trades,
-  bookings, or mutations
-- Missing circuit breakers for external APIs: payments, email, messaging,
-  exchanges, AI providers
+- Missing idempotency keys on critical operations: billing, orders, bookings,
+  approvals, uploads, or mutations
+- Missing circuit breakers for external APIs: billing, email, messaging,
+  storage, AI providers, or other integrations
 - Database connection pool exhaustion
 - Missing rate limiting per user/account, not only per IP
 - Cron jobs that overlap
@@ -459,9 +460,10 @@ Check:
 - Audit logs for sensitive actions
 - Privacy policy and terms links in signup, checkout, and footer
 - Cookie banner or consent mode where required
-- Payment data handling and whether card data is kept out of the app
-- Fintech-specific risks: KYC/AML assumptions, financial disclaimers, risk
-  warnings, region restrictions
+- Billing data handling and whether card data is kept out of the app when
+  payments exist
+- Regulated or high-risk product assumptions: consent, age gates, disclaimers,
+  region restrictions, professional claims, or safety warnings
 - AI-specific risks: user data sent to model providers, prompt logging, opt-out
   controls
 
@@ -620,7 +622,7 @@ Check:
 - User error vs system error vs external service error
 - WebSocket disconnect and reconnect behavior
 - Queue failures and retry/dead-letter handling
-- Payment, order, booking, or domain-critical failures
+- Billing, order, booking, approval, upload, or domain-critical failures
 
 For every issue, provide:
 - File path and line number
@@ -654,8 +656,8 @@ Set up or recommend:
   - onboarding_completed
   - first_core_action_completed
   - trial_started or plan_selected
-  - payment_succeeded
-  - payment_failed
+  - paid_plan_started or billing_succeeded
+  - billing_failed
   - user_churn_risk_detected
 - Domain events for this product's most important workflow
 - Error events for failed critical actions
@@ -692,17 +694,18 @@ Audit all user-facing notifications and communications.
 Do not modify files yet. Produce a report first.
 
 Check:
-- Transactional emails for signup, login, verification, payment, security, and
+- Transactional emails for signup, login, verification, billing, security, and
   major product events
 - Email templates that are mobile-responsive, branded, and clear
 - In-app notifications that are grouped, dismissible, and actionable
-- Messaging integrations such as Telegram, Slack, Discord, or SMS if present
+- Messaging integrations such as Slack, Discord, SMS, chat, or messaging apps if
+  present
 - Notification preferences
 - Duplicate notification prevention
 - User timezone handling
 - Unsubscribe behavior for non-transactional messages
 - Security notifications for sensitive account changes
-- Failed payment, renewal, cancellation, and refund messages
+- Failed billing, renewal, cancellation, and refund messages when billing exists
 - Whether notification content leaks sensitive data
 
 For each missing or broken notification, provide:
@@ -720,31 +723,33 @@ End with:
 
 ---
 
-### 18. Payment and Subscription Flow
+### 18. Revenue, Billing, and Subscription Flow
 
 ```text
-You are a revenue engineer reviewing payment and subscription implementation.
+You are a revenue engineer reviewing billing, pricing, and subscription flows.
 
-Audit the complete payment flow for correctness, security, and conversion.
+Audit the complete revenue flow for correctness, security, and conversion.
 
 Do not modify files yet. Produce a report first. Do not print secrets.
 
 Check:
 - Pricing page clarity
-- Trial, freemium, or activation-before-payment flow
-- Payment failure handling
-- Subscription renewal reminders
+- Trial, freemium, or activation-before-billing flow
+- Billing failure handling
+- Subscription or plan renewal reminders where applicable
 - Cancellation and downgrade behavior
 - Plan limits enforced server-side
-- Payment webhook signature verification
-- Payment webhook idempotency
+- Billing or external-service webhook signature verification
+- Billing or external-service webhook idempotency
 - Duplicate event handling
 - Refund flow
 - Receipt delivery
-- Failed payment retry policy
+- Failed billing retry policy
 - Tax/VAT handling if relevant
 - Whether card data is handled only by the payment provider
-- Access changes after payment, renewal failure, cancellation, or refund
+- Access changes after purchase, renewal failure, cancellation, or refund
+- Non-payment revenue models: lead capture, usage quotas, credits, seats,
+  upgrades, sponsor links, or paid support
 
 For every issue, provide:
 - File path and line number
@@ -754,12 +759,12 @@ For every issue, provide:
 
 Also provide:
 - Pricing page copy improvements
-- Payment failure email template
+- Billing failure email template
 - Renewal reminder email template
 - Minimal tests required before launch
 
 End with:
-- Payment readiness score: X/10
+- Revenue readiness score: X/10
 - Revenue or security issues that block launch
 ```
 
@@ -857,4 +862,5 @@ End with:
 11. 11-20 after critical launch blockers are fixed
 
 Do not go live while prompts 02, 05, 07, 08, or 10 report CRITICAL issues.
-For fintech, payment, or regulated products, also clear prompts 11 and 18.
+For apps with payments, regulated data, AI data-sharing, or high-risk user
+actions, also clear prompts 11 and 18.
