@@ -4,6 +4,7 @@
 agents.
 
 Use one prompt at a time. Do not run this whole file as one giant prompt.
+Individual prompt files are available in [prompts/](prompts).
 
 Global operating rules for every prompt:
 

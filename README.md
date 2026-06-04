@@ -28,8 +28,11 @@ These prompts turn that uncertainty into a repeatable launch checklist.
 | File | Use |
 | --- | --- |
 | [PROMPTS.md](PROMPTS.md) | 20 copy-paste prompts for codebase-aware agents |
+| [prompts/](prompts) | Same prompts split into individual files |
 | [CHECKLIST.md](CHECKLIST.md) | One-page launch readiness checklist |
 | [SCORECARD.md](SCORECARD.md) | Template for recording audit results and fixes |
+| [docs/STANDARDS_MAP.md](docs/STANDARDS_MAP.md) | How this maps to public launch/security standards |
+| [examples/](examples) | Fictional sample output for contributors and users |
 
 ### Part 1: Pre-Launch Audit
 
@@ -73,8 +76,8 @@ Work from a clean branch in the target app:
 git status --short --branch
 ```
 
-Then copy one prompt from [PROMPTS.md](PROMPTS.md) into your agent. Do not run
-the entire file at once.
+Then copy one prompt from [PROMPTS.md](PROMPTS.md) or [prompts/](prompts) into
+your agent. Do not run the entire file at once.
 
 With Codex:
 
@@ -84,6 +87,12 @@ codex "<paste one prompt from PROMPTS.md>"
 
 With Claude Code, paste one prompt into the session or pass it through your
 normal Claude Code CLI workflow.
+
+Example:
+
+```bash
+codex "$(cat prompts/02-security-audit-think-like-a-hacker.md)"
+```
 
 Recommended order:
 
@@ -164,6 +173,9 @@ Good contributions are practical:
 
 Keep the repo focused. Do not submit private project files, logs, screenshots
 with customer data, credentials, or production configuration.
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) before opening a pull request. For
+security-sensitive reports, use [SECURITY.md](SECURITY.md).
 
 ## License
 

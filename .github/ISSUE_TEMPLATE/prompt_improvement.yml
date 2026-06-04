@@ -1,0 +1,33 @@
+name: Prompt improvement
+description: Improve an existing prompt or propose a new launch-review prompt.
+title: "[Prompt]: "
+labels:
+  - prompt
+body:
+  - type: markdown
+    attributes:
+      value: Keep examples fictional. Do not include private code, logs, or data.
+  - type: input
+    id: prompt
+    attributes:
+      label: Prompt or section
+      placeholder: "02 Security Audit"
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What launch risk does this catch?
+    validations:
+      required: true
+  - type: textarea
+    id: change
+    attributes:
+      label: Suggested change
+    validations:
+      required: true
+  - type: textarea
+    id: example
+    attributes:
+      label: Fictional example
+      description: Use made-up app names and paths only.

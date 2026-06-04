@@ -1,0 +1,35 @@
+name: Checklist gap
+description: Report a missing launch-readiness checklist or scorecard item.
+title: "[Checklist]: "
+labels:
+  - checklist
+body:
+  - type: textarea
+    id: gap
+    attributes:
+      label: Missing check
+      description: What should be added?
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why it matters before launch
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Security
+        - Data
+        - Reliability
+        - Observability
+        - UX
+        - Testing
+        - DevOps
+        - Repository
+        - Other
+    validations:
+      required: true

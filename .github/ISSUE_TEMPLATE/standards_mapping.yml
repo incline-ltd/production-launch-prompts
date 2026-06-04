@@ -1,0 +1,25 @@
+name: Standards mapping
+description: Suggest a correction to standards coverage.
+title: "[Standards]: "
+labels:
+  - standards
+body:
+  - type: input
+    id: standard
+    attributes:
+      label: Standard or source
+      placeholder: OWASP ASVS, OWASP API Top 10, Google SRE, etc.
+    validations:
+      required: true
+  - type: textarea
+    id: correction
+    attributes:
+      label: Correction
+    validations:
+      required: true
+  - type: input
+    id: link
+    attributes:
+      label: Public source link
+    validations:
+      required: true
