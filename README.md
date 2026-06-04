@@ -77,7 +77,9 @@ git status --short --branch
 ```
 
 Then copy one prompt from [PROMPTS.md](PROMPTS.md) or [prompts/](prompts) into
-your agent. Do not run the entire file at once.
+your agent. Do not run the entire file at once. The numbered names below are
+short labels; the exact prompt filenames are listed in
+[prompts/README.md](prompts/README.md).
 
 With Codex:
 
@@ -94,14 +96,62 @@ Example:
 codex "$(cat prompts/02-security-audit-think-like-a-hacker.md)"
 ```
 
-Recommended order:
+### Existing App Quick Start
 
-1. Run 02 Security Audit first.
-2. Run 05 Database Audit second.
-3. Run 07 Testing Audit and 08 DevOps Audit before any launch decision.
-4. Run 01, 03, 04, 06, and 09 in any order.
-5. Run 10 Launch Verdict last.
-6. Run 11-20 after all critical launch blockers are resolved.
+For an existing product or app, start with the highest-risk launch checks:
+
+| Step | Exact prompt file | What to do |
+| --- | --- | --- |
+| 1 | [prompts/02-security-audit-think-like-a-hacker.md](prompts/02-security-audit-think-like-a-hacker.md) | Find auth, access-control, injection, XSS, secret, and privilege risks |
+| 2 | [prompts/05-database-audit.md](prompts/05-database-audit.md) | Find data-loss, integrity, migration, and concurrency risks |
+| 3 | [prompts/07-testing-audit.md](prompts/07-testing-audit.md) | Find missing coverage for critical user and failure paths |
+| 4 | [prompts/08-devops-and-infrastructure-audit.md](prompts/08-devops-and-infrastructure-audit.md) | Find CI, deployment, rollback, logging, and backup gaps |
+| 5 | [prompts/10-launch-verdict-and-scalability-audit.md](prompts/10-launch-verdict-and-scalability-audit.md) | Produce the final launch verdict and scorecard |
+
+Use this prefix when running a prompt in an existing app:
+
+```text
+Audit only. Do not edit files yet.
+Do not read env files, secrets, credentials, production logs, or customer data.
+Return findings with file path, line number, severity, risk scenario, and
+recommended fix.
+```
+
+After the first five audits, ask your agent to consolidate the output:
+
+```text
+Create a consolidated launch risk report from the audits already run.
+
+Group findings into:
+1. CRITICAL launch blockers
+2. HIGH priority before real users
+3. MEDIUM follow-up
+4. LOW cleanup
+
+For each finding include:
+- source audit prompt
+- file path and line number
+- risk scenario
+- recommended fix
+- estimated effort: small / medium / large
+- whether the fix is safe to do now
+
+Do not edit files yet.
+```
+
+### Recommended Order
+
+1. Run [02 Security Audit](prompts/02-security-audit-think-like-a-hacker.md)
+   first.
+2. Run [05 Database Audit](prompts/05-database-audit.md) second.
+3. Run [07 Testing Audit](prompts/07-testing-audit.md) and
+   [08 DevOps and Infrastructure Audit](prompts/08-devops-and-infrastructure-audit.md)
+   before any launch decision.
+4. Run prompts 01, 03, 04, 06, and 09 in any order.
+5. Run
+   [10 Launch Verdict and Scalability Audit](prompts/10-launch-verdict-and-scalability-audit.md)
+   last.
+6. Run prompts 11-20 after all critical launch blockers are resolved.
 
 Do not go live while prompts 02, 05, 07, 08, or 10 report CRITICAL issues.
 For apps with payments, regulated data, AI data-sharing, or high-risk user
