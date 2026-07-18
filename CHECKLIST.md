@@ -15,6 +15,8 @@ Do not launch if any of these are true:
 - There is no tested rollback path.
 - There is no way to notice a production failure.
 - The core user journey is untested.
+- An AI agent can take a sensitive action without authorization or required
+  human approval.
 
 ## Core Product
 
@@ -34,6 +36,18 @@ Do not launch if any of these are true:
 - [ ] Rate limits protect login, OTP, password reset, and expensive workflows.
 - [ ] Webhooks verify signatures and reject replays.
 - [ ] Security headers are configured.
+
+## AI and Agent Safety
+
+- [ ] Untrusted content cannot change system instructions or permissions.
+- [ ] Provider retention, training, region, and deletion match product promises.
+- [ ] Only the minimum required context is sent to model providers.
+- [ ] Tools use allowlists, least privilege, validated input, and authorization
+  checks on the server.
+- [ ] Sensitive or irreversible actions require human approval.
+- [ ] Usage limits, budgets, alerts, and a kill switch are in place.
+- [ ] Evals cover prompt injection, unsafe actions, failures, and regressions.
+- [ ] Safe fallbacks exist when a model, provider, or tool fails.
 
 ## Data
 

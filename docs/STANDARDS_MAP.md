@@ -12,6 +12,9 @@ matters.
 - [Twelve-Factor App: Config](https://www.12factor.net/config)
 - [GitHub Security Features](https://docs.github.com/en/code-security/getting-started/github-security-features/)
 - [OpenSSF Scorecard](https://github.com/ossf/scorecard)
+- [OWASP Top 10 for LLM Applications 2025](https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/)
+- [OWASP Top 10 for Agentic Applications 2026](https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/)
+- [NIST Generative AI Profile](https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence)
 
 ## Prompt Coverage
 
@@ -37,6 +40,7 @@ matters.
 | 18 Revenue | Billing, entitlements, webhooks | Business-critical flow integrity |
 | 19 Documentation | User support and knowledge base | Launch support readiness |
 | 20 Mobile | Responsive behavior across viewports | Frontend production readiness |
+| 21 AI and Agent Safety | Injection, tool access, data, budgets, evals | OWASP LLM and Agentic Top 10, NIST Generative AI Profile |
 
 ## Why These Standards Matter
 
@@ -53,3 +57,8 @@ not committed files.
 GitHub community and security features matter because public repositories need
 clear contribution paths, vulnerability reporting, secret scanning, code
 scanning, and dependency visibility.
+
+The OWASP LLM and Agentic Top 10 cover prompt injection, sensitive information,
+tool misuse, excessive agency, and unbounded consumption. The NIST Generative
+AI Profile adds practical risk management and evaluation guidance across the
+AI lifecycle.

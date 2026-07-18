@@ -1,6 +1,6 @@
 # Solo Founder Production Launch Prompts
 
-20 audit-first prompts for Claude Code, Codex, Cursor, and other codebase-aware
+21 audit-first prompts for Claude Code, Codex, Cursor, and other codebase-aware
 agents.
 
 Use one prompt at a time. Do not run this whole file as one giant prompt.
@@ -848,20 +848,76 @@ End with:
 
 ---
 
+### 21. AI and Agent Production Safety
+
+```text
+You are reviewing an AI feature or agent before production launch.
+
+Find ways it could leak data, take an unsafe action, waste money, or fail
+without a safe recovery.
+
+Do not modify files yet. Produce a report first. Do not print secret values,
+customer data, or sensitive model input and output content.
+
+If this product has no AI or agent feature, say not applicable and stop.
+
+Check:
+- Direct and indirect prompt injection from users, web pages, documents,
+  retrieval, memory, and tool results
+- Whether untrusted content is kept separate from system instructions and
+  cannot change permissions
+- Provider retention, training, region, and deletion settings, including any
+  gap between code, configuration, and provider terms
+- The exact context sent to each provider and whether secrets, credentials,
+  private files, other users' data, and unrelated history are excluded
+- Tool allowlists, input validation, least privilege, tenant isolation, and
+  authorization checks on the server
+- Human approval before payments, deletion, account changes, messages,
+  deployments, or other irreversible or external actions
+- Request, token, tool step, time, and concurrency limits, plus per user or
+  workspace budgets, alerts, and a kill switch
+- Evals for normal use, prompt injection, authorization bypass, bad tool
+  output, provider failure, refusal, and regressions
+- Safe fallback behavior when a model, provider, or tool fails or returns an
+  invalid or uncertain result
+- Output validation before model output is used as code, SQL, HTML, a command,
+  or tool input
+- Logs and traces that support debugging without storing sensitive context
+
+For every issue, provide:
+- File path and line number, provider setting, or runtime control
+- Confirmed evidence or an explicit unknown
+- Severity: CRITICAL / HIGH / MEDIUM / LOW
+- Abuse or failure scenario in plain English
+- Exact recommended fix
+- Whether this blocks launch
+
+End with:
+- AI and agent safety score: X/10
+- Critical launch blockers
+- Actions that require human approval
+- Data sent to each provider and its retention status
+- Minimum eval and fallback set required before launch
+- Top 5 fixes ranked by risk x effort
+```
+
+---
+
 ## Recommended Run Order
 
 1. 02 Security Audit
-2. 05 Database Audit
-3. 07 Testing Audit
-4. 08 DevOps and Infrastructure Audit
-5. 01 Architecture Audit
-6. 03 Performance Audit
-7. 04 Code Quality Audit
-8. 06 API Design Audit
-9. 09 Frontend and UX Audit
-10. 10 Launch Verdict and Scalability Audit
-11. 11-20 after critical launch blockers are fixed
+2. 21 AI and Agent Production Safety, when applicable
+3. 05 Database Audit
+4. 07 Testing Audit
+5. 08 DevOps and Infrastructure Audit
+6. 01 Architecture Audit
+7. 03 Performance Audit
+8. 04 Code Quality Audit
+9. 06 API Design Audit
+10. 09 Frontend and UX Audit
+11. 10 Launch Verdict and Scalability Audit
+12. 11-20 after critical launch blockers are fixed
 
 Do not go live while prompts 02, 05, 07, 08, or 10 report CRITICAL issues.
-For apps with payments, regulated data, AI data-sharing, or high-risk user
-actions, also clear prompts 11 and 18.
+For apps with payments, also clear prompt 18. For regulated data or AI data
+sharing, also clear prompt 11. For any AI or agent feature, clear prompt 21.

@@ -1,6 +1,6 @@
 # Production Launch Prompts for Solo Founders
 
-20 audit-first prompts for Claude Code, Codex, and other codebase-aware agents
+21 audit-first prompts for Claude Code, Codex, and other codebase-aware agents
 before real users or production traffic are involved.
 
 This is for solo founders who need a practical launch review without enterprise
@@ -27,7 +27,7 @@ These prompts turn that uncertainty into a repeatable launch checklist.
 
 | File | Use |
 | --- | --- |
-| [PROMPTS.md](PROMPTS.md) | 20 copy-paste prompts for codebase-aware agents |
+| [PROMPTS.md](PROMPTS.md) | 21 copy-paste prompts for codebase-aware agents |
 | [prompts/](prompts) | Same prompts split into individual files |
 | [CHECKLIST.md](CHECKLIST.md) | One-page launch readiness checklist |
 | [SCORECARD.md](SCORECARD.md) | Template for recording audit results and fixes |
@@ -53,7 +53,8 @@ Run these before your first real user.
 
 ### Part 2: Product and Operations Readiness
 
-Run these after critical launch blockers are fixed.
+Run prompts 11-20 after critical launch blockers are fixed. Run prompt 21 for
+any AI or agent feature before the final launch verdict.
 
 | # | Prompt | What It Improves |
 | --- | --- | --- |
@@ -67,6 +68,7 @@ Run these after critical launch blockers are fixed.
 | 18 | Revenue and Subscription Flow | Pricing, plans, billing, entitlements |
 | 19 | Documentation and Knowledge Base | User docs, FAQ, troubleshooting |
 | 20 | Mobile Responsiveness | 360px through desktop readiness |
+| 21 | AI and Agent Production Safety | Prompt injection, tool access, data, cost, evals |
 
 ## How to Use
 
@@ -139,6 +141,10 @@ For each finding include:
 Do not edit files yet.
 ```
 
+If the app uses AI or agents, run
+[21 AI and Agent Production Safety](prompts/21-ai-and-agent-production-safety.md)
+after the security audit and before the final launch verdict.
+
 ### Recommended Order
 
 1. Run [02 Security Audit](prompts/02-security-audit-think-like-a-hacker.md)
@@ -148,14 +154,16 @@ Do not edit files yet.
    [08 DevOps and Infrastructure Audit](prompts/08-devops-and-infrastructure-audit.md)
    before any launch decision.
 4. Run prompts 01, 03, 04, 06, and 09 in any order.
-5. Run
+5. For any AI or agent feature, run
+   [21 AI and Agent Production Safety](prompts/21-ai-and-agent-production-safety.md).
+6. Run
    [10 Launch Verdict and Scalability Audit](prompts/10-launch-verdict-and-scalability-audit.md)
    last.
-6. Run prompts 11-20 after all critical launch blockers are resolved.
+7. Run prompts 11-20 after all critical launch blockers are resolved.
 
 Do not go live while prompts 02, 05, 07, 08, or 10 report CRITICAL issues.
-For apps with payments, regulated data, AI data-sharing, or high-risk user
-actions, also clear prompts 11 and 18.
+For apps with payments, also clear prompt 18. For regulated data or AI data
+sharing, also clear prompt 11. For any AI or agent feature, clear prompt 21.
 
 ## Output Contract
 
