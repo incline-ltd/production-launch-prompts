@@ -8,6 +8,11 @@ process. It works for SaaS, marketplaces, AI products, internal tools, mobile
 apps, APIs, dashboards, and most software products where security, reliability,
 data integrity, and user trust matter.
 
+[![Fictional launch audit showing a not-ready verdict, a score of 68 out of 100, two critical blockers, and five high priority issues](docs/assets/fictional-launch-audit.svg)](examples/fictional-saas-scorecard.md)
+
+This fictional preview shows the kind of clear launch decision these prompts
+produce. [See the full sample scorecard](examples/fictional-saas-scorecard.md).
+
 ## Why This Exists
 
 Most prompt collections are generic. Production launch work is not generic.
@@ -219,6 +224,15 @@ or production logs into an AI tool. If a prompt finds a secret, rotate it.
 ## Author
 
 Maintained by [Ashish Kaloge](https://github.com/ashishkaloge).
+
+## Related Public Projects
+
+- [Coding Agent Guidelines](https://github.com/ashishkaloge/coding-agent-guidelines)
+  gives coding agents practical working rules.
+- [Awesome Agentic Engineering](https://github.com/ashishkaloge/awesome-agentic-engineering)
+  collects useful tools and references for building with coding agents.
+- [Algo Trading Website](https://github.com/ashishkaloge/algo-trading-website)
+  is a small static landing page example built with reusable web primitives.
 
 ## Contributing
 

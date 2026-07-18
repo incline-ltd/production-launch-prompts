@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560" role="img" aria-labelledby="title description">
+  <title id="title">Fictional SaaS launch audit</title>
+  <desc id="description">A sample launch audit for Acme Notes. The verdict is not ready, the overall score is 68 out of 100, with two critical blockers and five high priority issues. The top blocker is a missing note ownership check.</desc>
+  <rect width="1200" height="560" rx="24" fill="#f7f8fa"/>
+  <rect x="32" y="32" width="1136" height="496" rx="18" fill="#ffffff" stroke="#d8dee8" stroke-width="2"/>
+
+  <text x="72" y="90" fill="#667085" font-family="Arial, sans-serif" font-size="20" font-weight="700" letter-spacing="1.5">FICTIONAL SAMPLE</text>
+  <text x="72" y="140" fill="#101828" font-family="Arial, sans-serif" font-size="34" font-weight="700">Acme Notes launch audit</text>
+  <text x="72" y="178" fill="#475467" font-family="Arial, sans-serif" font-size="20">A clear verdict, ranked risks, and the next fixes.</text>
+
+  <rect x="72" y="218" width="310" height="118" rx="14" fill="#fff1f0" stroke="#fda29b"/>
+  <text x="96" y="254" fill="#b42318" font-family="Arial, sans-serif" font-size="17" font-weight="700">LAUNCH VERDICT</text>
+  <text x="96" y="304" fill="#7a271a" font-family="Arial, sans-serif" font-size="36" font-weight="700">NOT READY</text>
+
+  <rect x="406" y="218" width="210" height="118" rx="14" fill="#f2f4f7" stroke="#d0d5dd"/>
+  <text x="430" y="254" fill="#475467" font-family="Arial, sans-serif" font-size="17" font-weight="700">OVERALL SCORE</text>
+  <text x="430" y="304" fill="#101828" font-family="Arial, sans-serif" font-size="36" font-weight="700">68 / 100</text>
+
+  <rect x="640" y="218" width="214" height="118" rx="14" fill="#fff1f0" stroke="#fda29b"/>
+  <text x="664" y="254" fill="#b42318" font-family="Arial, sans-serif" font-size="17" font-weight="700">CRITICAL</text>
+  <text x="664" y="304" fill="#7a271a" font-family="Arial, sans-serif" font-size="36" font-weight="700">2 blockers</text>
+
+  <rect x="878" y="218" width="242" height="118" rx="14" fill="#fffaeb" stroke="#fec84b"/>
+  <text x="902" y="254" fill="#b54708" font-family="Arial, sans-serif" font-size="17" font-weight="700">HIGH PRIORITY</text>
+  <text x="902" y="304" fill="#7a2e0e" font-family="Arial, sans-serif" font-size="36" font-weight="700">5 issues</text>
+
+  <rect x="72" y="370" width="1048" height="110" rx="14" fill="#f9fafb" stroke="#e4e7ec"/>
+  <circle cx="112" cy="425" r="20" fill="#d92d20"/>
+  <text x="105" y="433" fill="#ffffff" font-family="Arial, sans-serif" font-size="24" font-weight="700">!</text>
+  <text x="148" y="410" fill="#667085" font-family="Arial, sans-serif" font-size="17" font-weight="700">TOP BLOCKER</text>
+  <text x="148" y="449" fill="#101828" font-family="Arial, sans-serif" font-size="24" font-weight="700">Notes API lacks an ownership check</text>
+  <text x="798" y="430" fill="#475467" font-family="Arial, sans-serif" font-size="18">Fix before launch</text>
+</svg>
