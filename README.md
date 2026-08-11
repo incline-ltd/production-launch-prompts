@@ -227,12 +227,10 @@ Maintained by [Ashish Kaloge](https://github.com/ashishkaloge).
 
 ## Related Public Projects
 
-- [Coding Agent Guidelines](https://github.com/ashishkaloge/coding-agent-guidelines)
+- [Coding Agent Guidelines](https://github.com/incline-ltd/coding-agent-guidelines)
   gives coding agents practical working rules.
-- [Awesome Agentic Engineering](https://github.com/ashishkaloge/awesome-agentic-engineering)
+- [Awesome Agentic Engineering](https://github.com/incline-ltd/awesome-agentic-engineering)
   collects useful tools and references for building with coding agents.
-- [Algo Trading Website](https://github.com/ashishkaloge/algo-trading-website)
-  is a small static landing page example built with reusable web primitives.
 
 ## Contributing
 
